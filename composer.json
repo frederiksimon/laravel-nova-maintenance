@@ -1,0 +1,30 @@
+{
+    "name": "marshmallow/maintenance",
+    "description": "A Laravel Nova tool.",
+    "keywords": [
+        "laravel",
+        "nova"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "marshmallow/helpers": "^2.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "Marshmallow\\Maintenance\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Marshmallow\\Maintenance\\ToolServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
