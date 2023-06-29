@@ -2,6 +2,7 @@
 
 namespace Marshmallow\Maintenance\Http\Controllers;
 
+use Config;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Marshmallow\HelperFunctions\Facades\URL;
@@ -37,12 +38,6 @@ class ToolController extends Controller
 
     public function config(Request $request)
     {
-        ray(config('maintenance'), $request->all())->die();
-        return config('maintenance.redirect');
-        // // get the config
-        // $config = config('maintenance');
-        // return response([
-        //     'config' => $config,
-        // ], 200);
+        return config('maintenance');
     }
 }

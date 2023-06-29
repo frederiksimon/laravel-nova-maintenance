@@ -68,7 +68,7 @@
                         >
                             <div class="space-y-1">
                                 <input
-                                    v-model="redirect"
+                                    v-model="config.redirect"
                                     type="text"
                                     name="redirect"
                                     class="w-1/2 form-control form-input form-input-bordered"
@@ -97,7 +97,7 @@
                         >
                             <div class="space-y-1">
                                 <input
-                                    v-model="render"
+                                    v-model="config.render"
                                     type="text"
                                     name="render"
                                     class="w-1/2 form-control form-input form-input-bordered"
@@ -126,7 +126,7 @@
                             class="w-full px-6 pb-5 mt-1 md:mt-0 md:px-8 md:w-3/5 md:py-5"
                         >
                             <input
-                                v-model="refresh"
+                                v-model="config.refresh"
                                 type="text"
                                 name="refresh"
                                 class="w-1/2 form-control form-input form-input-bordered"
@@ -152,7 +152,7 @@
                             class="w-full px-6 pb-5 mt-1 md:mt-0 md:px-8 md:w-3/5 md:py-5"
                         >
                             <input
-                                v-model="secret"
+                                v-model="config.secret"
                                 type="text"
                                 name="secret"
                                 class="w-1/2 form-control form-input form-input-bordered"
@@ -172,123 +172,134 @@
 </template>
 
 <script>
-export default {
-    mounted() {
-        Nova.request()
-            .get("/nova-vendor/maintenance/status")
-            .then((response) => {
-                this.statusMessage = "Data successfully loaded.";
-                this.currentlyInMaintenance =
-                    response.data.currentlyInMaintenance;
-            });
-    },
-    data: function () {
-        return {
-            redirect: "/maintenance",
-            render: "mm-maintenance::index",
-            refresh: 60,
-            secret: "view-website",
-            retry: 60,
-            currentlyInMaintenance: null,
-        };
-    },
-    methods: {
-        enableMaintenance() {
-            let self = this;
-
+    export default {
+        mounted() {
             Nova.request()
-                .post("/nova-vendor/maintenance/down", {
-                    message: "",
-                    redirect: this.redirect,
-                    render: this.render,
-                    refresh: this.refresh,
-                    secret: this.secret,
-                    retry: this.retry,
+                .get("/nova-vendor/maintenance/status")
+                .then((response) => {
+                    this.statusMessage = "Data successfully loaded.";
+                    this.currentlyInMaintenance =
+                        response.data.currentlyInMaintenance;
+                });
+            Nova.request()
+                .get("/nova-vendor/maintenance/config")
+                .then((response) => {
+                    console.log(response);
+                    this.config = response.data;
                 })
-                .then((response) => {
-                    self.currentlyInMaintenance = true;
+                .catch((error) => {
+                    console.error(error);
                 });
         },
-        disableMaintenance() {
-            let self = this;
-            Nova.request()
-                .post("/nova-vendor/maintenance/up")
-                .then((response) => {
-                    self.currentlyInMaintenance = false;
-                });
+        data() {
+            return {
+                config: {
+                    redirect: "",
+                    render: "",
+                    refresh: "",
+                    secret: "",
+                    retry: 60,
+                    currentlyInMaintenance: null,
+                },
+            };
         },
-        toggleMaintenanceMode(e) {
-            if (e.explicitOriginalTarget.checked) {
-                this.enableMaintenance();
-            } else {
-                this.disableMaintenance();
-            }
+        methods: {
+            enableMaintenance() {
+                let self = this;
+
+                Nova.request()
+                    .post("/nova-vendor/maintenance/down", {
+                        message: "",
+                        redirect: this.redirect,
+                        render: this.render,
+                        refresh: this.refresh,
+                        secret: this.secret,
+                        retry: this.retry,
+                    })
+                    .then((response) => {
+                        self.currentlyInMaintenance = true;
+                    });
+            },
+            disableMaintenance() {
+                let self = this;
+                Nova.request()
+                    .post("/nova-vendor/maintenance/up")
+                    .then((response) => {
+                        self.currentlyInMaintenance = false;
+                    });
+            },
+            toggleMaintenanceMode(e) {
+                if (e.explicitOriginalTarget.checked) {
+                    this.enableMaintenance();
+                } else {
+                    this.disableMaintenance();
+                }
+            },
         },
-    },
-};
+    };
 </script>
 
 <style>
-/* The switch - the box around the slider */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
+    /* The switch - the box around the slider */
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
 
-/* Hide default HTML checkbox */
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
 
-/* The slider */
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: red;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-}
+    /* The slider */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: red;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+    }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-}
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+    }
 
-input:checked + .slider {
-    background-color: green;
-}
+    input:checked + .slider {
+        background-color: green;
+    }
 
-input:focus + .slider {
-    box-shadow: 0 0 1px gren;
-}
+    input:focus + .slider {
+        box-shadow: 0 0 1px gren;
+    }
 
-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
 
-/* Rounded sliders */
-.slider.round {
-    border-radius: 34px;
-}
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
 
-.slider.round:before {
-    border-radius: 50%;
-}
+    .slider.round:before {
+        border-radius: 50%;
+    }
 </style>
