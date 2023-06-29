@@ -29,13 +29,6 @@
             ]
         }
     },
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi",
-            "@php artisan vendor:publish --tag=mm-maintenance --force"
-        ]
-    },
     "config": {
         "sort-packages": true
     },
