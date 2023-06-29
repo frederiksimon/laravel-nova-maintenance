@@ -34,4 +34,15 @@ class ToolController extends Controller
             'currentlyInMaintenance' => app()->isDownForMaintenance(),
         ], 200);
     }
+
+    public function config(Request $request)
+    {
+        ray(config('maintenance'), $request->all())->die();
+        return config('maintenance.redirect');
+        // // get the config
+        // $config = config('maintenance');
+        // return response([
+        //     'config' => $config,
+        // ], 200);
+    }
 }

@@ -17,3 +17,4 @@ use Marshmallow\Maintenance\Http\Controllers\ToolController;
 Route::get('status', [ToolController::class, 'status']);
 Route::post('up', [ToolController::class, 'up']);
 Route::post('down', [ToolController::class, 'down']);
+Route::post('config', [ToolController::class, 'config']);
