@@ -2,7 +2,6 @@
 
 namespace Marshmallow\Maintenance\Http\Controllers;
 
-use Config;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Marshmallow\HelperFunctions\Facades\URL;

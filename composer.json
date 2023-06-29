@@ -8,8 +8,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "marshmallow/helpers": "^2.16"
+        "marshmallow/helpers": "^2.16",
+        "laravel/nova": "~4.0"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Marshmallow\\Maintenance\\": "src/"
@@ -22,15 +29,15 @@
             ]
         }
     },
-    "config": {
-        "sort-packages": true
-    },
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan vendor:publish --tag={mm-maintenance}--force"
+            "@php artisan vendor:publish --tag=mm-maintenance --force"
         ]
+    },
+    "config": {
+        "sort-packages": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true
