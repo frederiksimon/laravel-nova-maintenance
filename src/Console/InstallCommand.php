@@ -3,6 +3,7 @@
 namespace Marshmallow\Maintenance\Console;
 
 use Illuminate\Console\Command;
+use Marshmallow\Maintenance\Maintenance;
 
 class InstallCommand extends Command
 {

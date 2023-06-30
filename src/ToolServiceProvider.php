@@ -21,6 +21,7 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function boot(Kernel $kernel)
     {
+
         $this->app->booted(function () {
             $this->routes();
         });
@@ -69,5 +70,11 @@ class ToolServiceProvider extends ServiceProvider
                 Console\InstallCommand::class,
             ]);
         }
+
+        // use the vendor configuration file as fallback
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/maintenance.php',
+            'maintenance'
+        );
     }
 }

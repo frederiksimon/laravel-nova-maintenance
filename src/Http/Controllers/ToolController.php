@@ -4,6 +4,7 @@ namespace Marshmallow\Maintenance\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Config;
 use Marshmallow\HelperFunctions\Facades\URL;
 use Marshmallow\Maintenance\MaintenanceMode;
 
