@@ -1,10 +1,5 @@
 # Maintenance Mode in Nova
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/davidpiesse/nova-maintenance-mode.svg?style=flat-square)](https://packagist.org/packages/davidpiesse/nova-maintenance-mode)
-[![Build Status](https://img.shields.io/travis/davidpiesse/nova-maintenance-mode/master.svg?style=flat-square)](https://travis-ci.org/davidpiesse/nova-maintenance-mode)
-[![Quality Score](https://img.shields.io/scrutinizer/g/davidpiesse/nova-maintenance-mode.svg?style=flat-square)](https://scrutinizer-ci.com/g/davidpiesse/nova-maintenance-mode)
-[![Total Downloads](https://img.shields.io/packagist/dt/davidpiesse/nova-maintenance-mode.svg?style=flat-square)](https://packagist.org/packages/davidpiesse/nova-maintenance-mode)
-
 This package allows you to manage the Maintenance Mode for your application in Nova
 
 ## Installation
@@ -12,22 +7,37 @@ This package allows you to manage the Maintenance Mode for your application in N
 You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
 
 ```bash
-composer require davidpiesse/nova-maintenance-mode
+composer require composer require marshmallow/maintenance
 ```
+
+Then you'll need to publish the config and view to give you more control and visibility. Run this command:
+
+```bash
+php artisan mm-maintenance:install
+```
+
+Two files have been added to your project:
+
+Maintenance page:
+`resources/views/vendor/marshmallow/maintenance`
+
+Config file:
+`config/maintenance.php`
 
 Next up, you must register the tool with Nova. This is typically done in the `tools` method of the `NovaServiceProvider`.
 
 ```php
-// in app/Providers/NovaServiceProvder.php
+// in app/Providers/NovaServiceProvder.**php**
 
 // ...
+use Marshmallow\Maintenance\Maintenance as MaintenanceTool;
 
 public function tools()
 {
     return [
-        // ...
-        new \Davidpiesse\NovaMaintenanceMode\Tool(),
-    ];
+            //
+            new MaintenanceTool
+        ];
 }
 ```
 
