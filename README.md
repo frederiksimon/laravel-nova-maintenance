@@ -10,7 +10,7 @@ You can install the package in to a Laravel app that uses [Nova](https://nova.la
 composer require composer require marshmallow/maintenance
 ```
 
-Then you'll need to publish the config and view to give you more control and visibility. Run this command:
+To publish the config and view to give you more control. Run this command:
 
 ```bash
 php artisan mm-maintenance:install
