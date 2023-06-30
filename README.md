@@ -59,6 +59,9 @@ When you have build you own maintenance mode page, you can view this by updating
 Your file structure will look like this:
 `resources/views/maintenance/index.blade.php`
 
+Or you can change the default view that comes with the package after installation.
+`resources/views/vendor/marshmallow/maintenance/index.blade.php`
+
 ## Credits
 
 -   [All contributors](https://github.com/marshmallow-packages/laravel-nova-maintenance/graphs/contributors)
