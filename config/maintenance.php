@@ -3,9 +3,9 @@
 return [
     'redirect' => '/maintenance-from-config',
 
-    'view' => 'mm-maintenance::index',
+    'render' => 'mm-maintenance::index',
 
-    'regfresh' => '60',
+    'refresh' => '60',
 
     'secret' => 'view-website',
 ];
