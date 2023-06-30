@@ -57,7 +57,6 @@ class ToolServiceProvider extends ServiceProvider
             ->prefix('nova-vendor/maintenance')
             ->group(__DIR__ . '/../routes/api.php');
     }
-
     /**
      * Register any application services.
      *
@@ -65,6 +64,10 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Console\InstallCommand::class,
+            ]);
+        }
     }
 }
