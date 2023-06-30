@@ -3164,7 +3164,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
     Nova.request().get("/nova-vendor/maintenance/status").then(function (response) {
       _this.statusMessage = "Data successfully loaded.";
-      _this.currentlyInMaintenance = response.data.currentlyInMaintenance;
+      _this.config.currentlyInMaintenance = response.data.currentlyInMaintenance;
     });
     Nova.request().get("/nova-vendor/maintenance/config").then(function (response) {
       console.log(response);
@@ -3190,19 +3190,19 @@ __webpack_require__.r(__webpack_exports__);
       var self = this;
       Nova.request().post("/nova-vendor/maintenance/down", {
         message: "",
-        redirect: this.redirect,
-        render: this.render,
-        refresh: this.refresh,
-        secret: this.secret,
-        retry: this.retry
+        redirect: this.config.redirect,
+        render: this.config.render,
+        refresh: this.config.refresh,
+        secret: this.config.secret,
+        retry: this.config.retry
       }).then(function (response) {
-        self.currentlyInMaintenance = true;
+        self.config.currentlyInMaintenance = true;
       });
     },
     disableMaintenance: function disableMaintenance() {
       var self = this;
       Nova.request().post("/nova-vendor/maintenance/up").then(function (response) {
-        self.currentlyInMaintenance = false;
+        self.config.currentlyInMaintenance = false;
       });
     },
     toggleMaintenanceMode: function toggleMaintenanceMode(e) {
@@ -3368,7 +3368,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1 /* STABLE */
       })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-          return _ctx.currentlyInMaintenance = $event;
+          return $data.config.currentlyInMaintenance = $event;
         }),
         onChange: _cache[1] || (_cache[1] = function () {
           return $options.toggleMaintenanceMode && $options.toggleMaintenanceMode.apply($options, arguments);
@@ -3378,14 +3378,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         height: "44",
         speed: "600",
         type: "checkbox"
-      }, null, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, _ctx.currentlyInMaintenance]]), _hoisted_5])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+      }, null, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.config.currentlyInMaintenance]]), _hoisted_5])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
         name: "fade"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_ctx.currentlyInMaintenance ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, _hoisted_9)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+          return [$data.config.currentlyInMaintenance ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, _hoisted_9)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
         }),
         _: 1 /* STABLE */
-      }), !_ctx.currentlyInMaintenance ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      }), !$data.config.currentlyInMaintenance ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $data.config.redirect = $event;
         }),

@@ -18,7 +18,7 @@
                 <div class="flex justify-end mr-3">
                     <label class="switch">
                         <input
-                            v-model="currentlyInMaintenance"
+                            v-model="config.currentlyInMaintenance"
                             @change="toggleMaintenanceMode"
                             class=""
                             width="100"
@@ -33,7 +33,7 @@
 
             <transition name="fade">
                 <div
-                    v-if="currentlyInMaintenance"
+                    v-if="config.currentlyInMaintenance"
                     class="flex flex-col items-center justify-center mb-6"
                 >
                     <svg
@@ -49,7 +49,7 @@
                 </div>
             </transition>
 
-            <div v-if="!currentlyInMaintenance" class="w-full">
+            <div v-if="!config.currentlyInMaintenance" class="w-full">
                 <div
                     class="bg-white divide-y divide-gray-100 dark:bg-gray-800 dark:divide-gray-700"
                 >
@@ -178,7 +178,7 @@
                 .get("/nova-vendor/maintenance/status")
                 .then((response) => {
                     this.statusMessage = "Data successfully loaded.";
-                    this.currentlyInMaintenance =
+                    this.config.currentlyInMaintenance =
                         response.data.currentlyInMaintenance;
                 });
             Nova.request()
@@ -210,14 +210,14 @@
                 Nova.request()
                     .post("/nova-vendor/maintenance/down", {
                         message: "",
-                        redirect: this.redirect,
-                        render: this.render,
-                        refresh: this.refresh,
-                        secret: this.secret,
-                        retry: this.retry,
+                        redirect: this.config.redirect,
+                        render: this.config.render,
+                        refresh: this.config.refresh,
+                        secret: this.config.secret,
+                        retry: this.config.retry,
                     })
                     .then((response) => {
-                        self.currentlyInMaintenance = true;
+                        self.config.currentlyInMaintenance = true;
                     });
             },
             disableMaintenance() {
@@ -225,7 +225,7 @@
                 Nova.request()
                     .post("/nova-vendor/maintenance/up")
                     .then((response) => {
-                        self.currentlyInMaintenance = false;
+                        self.config.currentlyInMaintenance = false;
                     });
             },
             toggleMaintenanceMode(e) {

@@ -21,8 +21,6 @@ class MaintenanceMode
     /**
      * Put Application into Maintenance Mode
      *
-     * @param Request $request
-     * @return void
      */
     public static function down($request)
     {
