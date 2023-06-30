@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'redirect' => '/maintenance-from-package',
+    'redirect' => '/maintenance',
 
     'render' => 'mm-maintenance::index',
 
