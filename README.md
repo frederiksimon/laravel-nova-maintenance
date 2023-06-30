@@ -45,7 +45,19 @@ public function tools()
 
 Click on the "Maintenance Mode" menu item in your Nova app to see the tool provided by this package.
 
-![Maintenance Mode Screenshot](https://res.cloudinary.com/davidpiesse/image/upload/v1534973628/Screen_Shot_2018-08-22_at_22.31.08_a6oeuf.png)
+![Maintenance Mode config Screenshot](resources/images/maintenance-config.png)
+![Maintenance Mode enabled Screenshot](resources/images/maintenance-enabled.png)
+
+## Custom view
+
+When you have build you own maintenance mode page, you can view this by updating the config file and update the value of the `render` key. For example:
+
+```
+'render' => 'maintenance.index',
+```
+
+Your file structure will look like this:
+`resources/views/maintenance/index.blade.php`
 
 ## Credits
 
