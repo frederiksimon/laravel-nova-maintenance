@@ -65,12 +65,6 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                Console\InstallCommand::class,
-            ]);
-        }
-
         // use the vendor configuration file as fallback
         $this->mergeConfigFrom(
             __DIR__ . '/../config/maintenance.php',
