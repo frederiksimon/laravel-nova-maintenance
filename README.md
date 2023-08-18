@@ -40,6 +40,13 @@ public function tools()
 }
 ```
 
+You can also add the maintenance tool to your Nova menu manually.
+```php
+MenuSection::make(__('Maintenance'))
+    ->icon('status-offline')
+    ->path('/maintenance'),
+```
+
 ## Usage
 
 Click on the "Maintenance Mode" menu item in your Nova app to see the tool provided by this package.
