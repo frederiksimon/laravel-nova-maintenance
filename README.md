@@ -13,7 +13,7 @@ composer require marshmallow/maintenance
 To publish the config and view to give you more control. Run this command:
 
 ```bash
-php artisan mm-maintenance:install
+php artisan vendor:publish --tag="mm-maintenance"
 ```
 
 Two files have been added to your project:
