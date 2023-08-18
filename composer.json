@@ -1,6 +1,6 @@
 {
     "name": "marshmallow/maintenance",
-    "description": "A Laravel Nova tool.",
+    "description": "A Laravel Nova tool to set your website in maintenance mode",
     "keywords": [
         "laravel",
         "nova"

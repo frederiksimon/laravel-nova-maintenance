@@ -184,7 +184,6 @@
             Nova.request()
                 .get("/nova-vendor/maintenance/config")
                 .then((response) => {
-                    console.log(response);
                     this.config = response.data;
                 })
                 .catch((error) => {

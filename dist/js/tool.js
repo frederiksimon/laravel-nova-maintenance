@@ -3167,7 +3167,6 @@ __webpack_require__.r(__webpack_exports__);
       _this.config.currentlyInMaintenance = response.data.currentlyInMaintenance;
     });
     Nova.request().get("/nova-vendor/maintenance/config").then(function (response) {
-      console.log(response);
       _this.config = response.data;
     })["catch"](function (error) {
       console.error(error);
