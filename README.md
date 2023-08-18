@@ -7,7 +7,7 @@ This package allows you to manage the Maintenance Mode for your application in N
 You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
 
 ```bash
-composer require composer require marshmallow/maintenance
+composer require marshmallow/maintenance
 ```
 
 To publish the config and view to give you more control. Run this command:
@@ -27,17 +27,15 @@ Config file:
 Next up, you must register the tool with Nova. This is typically done in the `tools` method of the `NovaServiceProvider`.
 
 ```php
-// in app/Providers/NovaServiceProvder.**php**
-
-// ...
+// in app/Providers/NovaServiceProvder.php
 use Marshmallow\Maintenance\Maintenance as MaintenanceTool;
 
 public function tools()
 {
     return [
-            //
-            new MaintenanceTool
-        ];
+        // ...
+        new MaintenanceTool
+    ];
 }
 ```
 
@@ -52,8 +50,12 @@ Click on the "Maintenance Mode" menu item in your Nova app to see the tool provi
 
 When you have build you own maintenance mode page, you can view this by updating the config file and update the value of the `render` key. For example:
 
-```
-'render' => 'maintenance.index',
+```php
+// in config/maintenance.php
+return [
+    // ...
+    'render' => 'maintenance.index',
+];
 ```
 
 Your file structure will look like this:
@@ -63,7 +65,7 @@ Or you can change the default view that comes with the package after installatio
 `resources/views/vendor/marshmallow/maintenance/index.blade.php`
 
 ## Credits
-
+-   [Lucien Versendaal](https://github.com/lucienversendaal)
 -   [All contributors](https://github.com/marshmallow-packages/laravel-nova-maintenance/graphs/contributors)
 
 ## License
