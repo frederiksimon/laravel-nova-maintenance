@@ -32,8 +32,11 @@ class ToolServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/vendor/marshmallow/maintenance'),
+        ], 'mm-maintenance-views');
+
+        $this->publishes([
             __DIR__ . '/../config/maintenance.php' =>  config_path('maintenance.php'),
-        ], 'mm-maintenance');
+        ], 'mm-maintenance-config');
 
         Nova::serving(function (ServingNova $event) {
             //
