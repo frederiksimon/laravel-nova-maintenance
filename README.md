@@ -28,13 +28,13 @@ Next up, you must register the tool with Nova. This is typically done in the `to
 
 ```php
 // in app/Providers/NovaServiceProvider.php
-use Marshmallow\Maintenance\Maintenance as MaintenanceTool;
+use Marshmallow\Maintenance\Maintenance;
 
 public function tools()
 {
     return [
         // ...
-        new MaintenanceTool
+        new Maintenance,
     ];
 }
 ```
