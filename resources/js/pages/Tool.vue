@@ -53,116 +53,122 @@
                 <div
                     class="bg-white divide-y divide-gray-100 dark:bg-gray-800 dark:divide-gray-700"
                 >
-                    <div class="flex flex-col md:flex-row" index="0">
+                    <div class="flex flex-col py-3 md:flex-row" index="0">
                         <div
                             class="w-full px-6 mt-2 md:px-8 md:mt-0 md:w-1/5 md:py-5"
                         >
                             <label
-                                for="name-create-user-text-field"
-                                class="inline-block pt-2 space-x-1 leading-tight"
-                                ><span>Redirect</span></label
+                                for="redirect"
+                                class="inline-block pt-2 mb-2 space-x-1 leading-tight"
                             >
+                                <span>Redirect</span>
+                            </label>
                         </div>
                         <div
                             class="w-full px-6 pb-5 mt-1 md:mt-0 md:px-8 md:w-3/5 md:py-5"
                         >
-                            <div class="space-y-1">
+                            <div class="flex items-center">
                                 <input
                                     v-model="config.redirect"
                                     type="text"
                                     name="redirect"
                                     class="w-1/2 form-control form-input form-input-bordered"
                                     placeholder="Redirect all requests to a specific URL"
-                                /><br />
-                                <span class="text-xs italic text-gray-500"
-                                    >Redirect all requests to a specific
-                                    URL.</span
-                                >
+                                />
                             </div>
-                            <!----><!---->
+                            <p class="mt-2 help-text">
+                                Redirect all requests to a specific URL.
+                            </p>
                         </div>
                     </div>
-                    <div class="flex flex-col md:flex-row" index="1">
+
+                    <div class="flex flex-col py-3 md:flex-row" index="1">
                         <div
                             class="w-full px-6 mt-2 md:px-8 md:mt-0 md:w-1/5 md:py-5"
                         >
                             <label
-                                for="email-create-user-text-field"
-                                class="inline-block pt-2 space-x-1 leading-tight"
-                                ><span>View</span>
+                                for="render"
+                                class="inline-block pt-2 mb-2 space-x-1 leading-tight"
+                            >
+                                <span>View</span>
                             </label>
                         </div>
                         <div
                             class="w-full px-6 pb-5 mt-1 md:mt-0 md:px-8 md:w-3/5 md:py-5"
                         >
-                            <div class="space-y-1">
+                            <div class="flex items-center">
                                 <input
                                     v-model="config.render"
                                     type="text"
                                     name="render"
                                     class="w-1/2 form-control form-input form-input-bordered"
                                     placeholder="Render a specific view"
-                                /><br />
-                                <span class="text-xs italic text-gray-500"
-                                    >This view is rendered before any of your
-                                    application's dependencies have
-                                    loaded.</span
-                                >
+                                />
                             </div>
-                            <!----><!---->
+                            <p class="mt-2 help-text">
+                                This view is rendered before any of your
+                                application's dependencies have loaded.
+                            </p>
                         </div>
                     </div>
-                    <div class="flex flex-col md:flex-row" index="2">
+
+                    <div class="flex flex-col py-3 md:flex-row" index="2">
                         <div
                             class="w-full px-6 mt-2 md:px-8 md:mt-0 md:w-1/5 md:py-5"
                         >
                             <label
-                                for="password-create-user-password-field"
-                                class="inline-block pt-2 space-x-1 leading-tight"
-                                ><span>Refresh</span></label
+                                for="refresh"
+                                class="inline-block pt-2 mb-2 space-x-1 leading-tight"
                             >
+                                <span>Refresh</span>
+                            </label>
                         </div>
                         <div
                             class="w-full px-6 pb-5 mt-1 md:mt-0 md:px-8 md:w-3/5 md:py-5"
                         >
-                            <input
-                                v-model="config.refresh"
-                                type="text"
-                                name="refresh"
-                                class="w-1/2 form-control form-input form-input-bordered"
-                                placeholder="Refresh the application after a specific number of seconds"
-                            /><br />
-                            <span class="text-xs italic text-gray-500">
+                            <div class="flex items-center">
+                                <input
+                                    v-model="config.refresh"
+                                    type="text"
+                                    name="refresh"
+                                    class="w-1/2 form-control form-input form-input-bordered"
+                                    placeholder="Refresh the application after a specific number of seconds"
+                                />
+                            </div>
+                            <p class="mt-2 help-text">
                                 Instruct the browser to automatically refresh
                                 the page after the specified number of seconds.
-                            </span>
+                            </p>
                         </div>
                     </div>
-                    <div class="flex flex-col md:flex-row" index="2">
+
+                    <div class="flex flex-col py-3 md:flex-row" index="3">
                         <div
                             class="w-full px-6 mt-2 md:px-8 md:mt-0 md:w-1/5 md:py-5"
                         >
                             <label
-                                for="password-create-user-password-field"
-                                class="inline-block pt-2 space-x-1 leading-tight"
-                                ><span>Secret</span></label
+                                for="refresh"
+                                class="inline-block pt-2 mb-2 space-x-1 leading-tight"
                             >
+                                <span>Secret</span>
+                            </label>
                         </div>
                         <div
                             class="w-full px-6 pb-5 mt-1 md:mt-0 md:px-8 md:w-3/5 md:py-5"
                         >
-                            <input
-                                v-model="config.secret"
-                                type="text"
-                                name="secret"
-                                class="w-1/2 form-control form-input form-input-bordered"
-                                placeholder="your-secret"
-                            /><br />
-                            <span class="text-xs italic text-gray-500"
-                                >To allow maintenance mode to be bypassed using
-                                a secret token.
-                                https://example.com/view-website</span
-                            >
+                            <div class="flex items-center">
+                                <input
+                                    v-model="config.secret"
+                                    type="text"
+                                    name="secret"
+                                    class="w-1/2 form-control form-input form-input-bordered"
+                                    placeholder="your-secret"
+                                />
+                            </div>
+                            <p class="mt-2 help-text">
+                                To allow maintenance mode to be bypassed using a
+                                secret token. https://example.com/view-website
+                            </p>
                         </div>
                     </div>
                 </div>

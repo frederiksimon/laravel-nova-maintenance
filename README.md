@@ -10,10 +10,11 @@ You can install the package in to a Laravel app that uses [Nova](https://nova.la
 composer require marshmallow/maintenance
 ```
 
-To publish the config and view to give you more control. Run this command:
+To publish the config and view to give you more control. Run the following commands. Please note; these are both optional.
 
 ```bash
-php artisan vendor:publish --tag="mm-maintenance"
+php artisan vendor:publish --tag="mm-maintenance-config"
+php artisan vendor:publish --tag="mm-maintenance-views"
 ```
 
 Two files have been added to your project:
@@ -27,16 +28,23 @@ Config file:
 Next up, you must register the tool with Nova. This is typically done in the `tools` method of the `NovaServiceProvider`.
 
 ```php
-// in app/Providers/NovaServiceProvder.php
-use Marshmallow\Maintenance\Maintenance as MaintenanceTool;
+// in app/Providers/NovaServiceProvider.php
+use Marshmallow\Maintenance\Maintenance;
 
 public function tools()
 {
     return [
         // ...
-        new MaintenanceTool
+        new Maintenance,
     ];
 }
+```
+
+You can also add the maintenance tool to your Nova menu manually.
+```php
+MenuSection::make(__('Maintenance'))
+    ->icon('status-offline')
+    ->path('/maintenance'),
 ```
 
 ## Usage
