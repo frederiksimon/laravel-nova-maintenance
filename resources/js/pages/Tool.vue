@@ -1,8 +1,8 @@
 <template>
     <div>
-        <Head title="Maintenance" />
+        <Head title="{{ __('Mód údržby') }}" />
 
-        <Heading class="mb-6">Maintenance</Heading>
+        <Heading class="mb-6">{{ __('Mód údržby') }}</Heading>
 
         <Card
             class="flex flex-col items-center justify-center"
@@ -12,12 +12,13 @@
                 class="flex items-center justify-between w-full py-4 border-b border-gray-100"
             >
                 <div class="flex justify-start ml-3">
-                    <heading>Maintenance Mode </heading>
+                    <heading>{{ __('Mód údržby') }} </heading>
                 </div>
 
                 <div class="flex justify-end mr-3">
                     <label class="switch">
                         <input
+                            id="maintenance-switch"
                             v-model="config.currentlyInMaintenance"
                             @change="toggleMaintenanceMode"
                             class=""
@@ -45,7 +46,7 @@
                             d="M320 32C196.3 32 96 132.3 96 256c0 123.76 100.3 224 224 224s224-100.24 224-224c0-123.7-100.3-224-224-224zm0 400c-97.05 0-176-78.95-176-176S222.95 80 320 80s176 78.95 176 176-78.95 176-176 176zm0-112c-17.67 0-32 14.33-32 32s14.33 32 32 32 32-14.33 32-32-14.33-32-32-32zm22.32-192h-44.64c-9.47 0-16.86 8.17-15.92 17.59l12.8 128c.82 8.18 7.7 14.41 15.92 14.41h19.04c8.22 0 15.1-6.23 15.92-14.41l12.8-128c.94-9.42-6.45-17.59-15.92-17.59zM48 256c0-59.53 19.55-117.38 55.36-164.51 5.18-6.81 4.48-16.31-2.03-21.86l-12.2-10.41c-6.91-5.9-17.62-5.06-23.15 2.15C23.32 117.02 0 185.5 0 256c0 70.47 23.32 138.96 65.96 194.62 5.53 7.21 16.23 8.05 23.15 2.16l12.19-10.4c6.51-5.55 7.21-15.04 2.04-21.86C67.55 373.37 48 315.53 48 256zM572.73 59.71c-5.58-7.18-16.29-7.95-23.17-2l-12.15 10.51c-6.47 5.6-7.1 15.09-1.88 21.87C572.04 137.47 592 195.81 592 256c0 60.23-19.96 118.57-56.46 165.95-5.22 6.78-4.59 16.27 1.88 21.87l12.15 10.5c6.87 5.95 17.59 5.18 23.17-2C616.21 396.38 640 327.31 640 256c0-71.27-23.79-140.34-67.27-196.29z"
                         />
                     </svg>
-                    <span>You are currently in Maintenance Mode</span>
+                    <span>Stránka je momentálne v údržbovom móde</span>
                 </div>
             </transition>
 
@@ -61,7 +62,7 @@
                                 for="redirect"
                                 class="inline-block pt-2 mb-2 space-x-1 leading-tight"
                             >
-                                <span>Redirect</span>
+                                <span>{{ 'Presmerovanie' }}</span>
                             </label>
                         </div>
                         <div
@@ -77,7 +78,7 @@
                                 />
                             </div>
                             <p class="mt-2 help-text">
-                                Redirect all requests to a specific URL.
+                                {{ __('Presmerovať všetky návštevy na špecifickú URL') }}
                             </p>
                         </div>
                     </div>
@@ -90,7 +91,7 @@
                                 for="render"
                                 class="inline-block pt-2 mb-2 space-x-1 leading-tight"
                             >
-                                <span>View</span>
+                                <span>{{ __('Zobraziť') }}</span>
                             </label>
                         </div>
                         <div
@@ -102,12 +103,11 @@
                                     type="text"
                                     name="render"
                                     class="w-1/2 form-control form-input form-input-bordered"
-                                    placeholder="Render a specific view"
+                                    placeholder="Zobraziť špecifickú šablónu"
                                 />
                             </div>
                             <p class="mt-2 help-text">
-                                This view is rendered before any of your
-                                application's dependencies have loaded.
+                                {{ __('Šablóna je renderovaná pred načítaním akejkoľvek "Dependency"') }}
                             </p>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                                 for="refresh"
                                 class="inline-block pt-2 mb-2 space-x-1 leading-tight"
                             >
-                                <span>Refresh</span>
+                                <span>{{ __('Obnoviť') }}</span>
                             </label>
                         </div>
                         <div
@@ -132,12 +132,11 @@
                                     type="text"
                                     name="refresh"
                                     class="w-1/2 form-control form-input form-input-bordered"
-                                    placeholder="Refresh the application after a specific number of seconds"
+                                    placeholder="Obnoviť aplikáciu po špecifickom počte sekúnd"
                                 />
                             </div>
                             <p class="mt-2 help-text">
-                                Instruct the browser to automatically refresh
-                                the page after the specified number of seconds.
+                                {{ __('Prehliadač obnoví reláciu po špecifickom počte sekúnd') }}
                             </p>
                         </div>
                     </div>
@@ -150,7 +149,7 @@
                                 for="refresh"
                                 class="inline-block pt-2 mb-2 space-x-1 leading-tight"
                             >
-                                <span>Secret</span>
+                                <span>{{ __('Tajný token') }}</span>
                             </label>
                         </div>
                         <div
@@ -162,12 +161,11 @@
                                     type="text"
                                     name="secret"
                                     class="w-1/2 form-control form-input form-input-bordered"
-                                    placeholder="your-secret"
+                                    placeholder="token"
                                 />
                             </div>
                             <p class="mt-2 help-text">
-                                To allow maintenance mode to be bypassed using a
-                                secret token. https://example.com/view-website
+                                {{ __('Pre obídenie údržbového módu, napr. https://example.com/view-website') }}
                             </p>
                         </div>
                     </div>
@@ -178,11 +176,14 @@
 </template>
 
 <script>
+    // import { Localization } from 'laravel-nova'
+
     export default {
         mounted() {
             Nova.request()
                 .get("/nova-vendor/maintenance/status")
                 .then((response) => {
+                    console.log(response.data.currentlyInMaintenance)
                     this.statusMessage = "Data successfully loaded.";
                     this.config.currentlyInMaintenance =
                         response.data.currentlyInMaintenance;
@@ -234,13 +235,15 @@
                     });
             },
             toggleMaintenanceMode(e) {
-                if (e.explicitOriginalTarget.checked) {
+                if (e.srcElement.checked) {
                     this.enableMaintenance();
                 } else {
                     this.disableMaintenance();
                 }
             },
         },
+
+        // mixins: [Localization]
     };
 </script>
 

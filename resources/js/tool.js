@@ -5,6 +5,8 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
+Nova.config.devtools = true
+
 Nova.booting((app, store) => {
     Nova.inertia("Maintenance", Tool);
 });

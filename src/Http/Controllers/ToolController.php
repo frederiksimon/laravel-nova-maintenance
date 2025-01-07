@@ -4,6 +4,7 @@ namespace Marshmallow\Maintenance\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Config;
 use Marshmallow\HelperFunctions\Facades\URL;
@@ -13,7 +14,10 @@ class ToolController extends Controller
 {
     public function up(Request $request)
     {
-        MaintenanceMode::up();
+//        MaintenanceMode::up();
+        Artisan::call('up');
+//        exec('nohup php artisan up > /dev/null &');
+
 
         return response([
             'message' => 'Application is now live',
@@ -39,6 +43,11 @@ class ToolController extends Controller
 
     public function config(Request $request)
     {
-        return config('maintenance');
+        return array_merge(
+            config('maintenance'),
+            [
+                'currentlyInMaintenance' => app()->isDownForMaintenance(),
+            ]
+        );
     }
 }
